@@ -10,7 +10,8 @@ public class ApplicationConfig{
 
     @Bean
     public CarRepository carRepository(){ // bean의 id 값이 메서드의 이름.
-        return new CarRepository(); // 실제 객체
+        return new CarRepository() {
+        }; // 실제 객체
     }
 
     @Bean
