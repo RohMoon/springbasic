@@ -1,10 +1,10 @@
-package com.basic.environment;
+package com.basic.applicationContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +12,14 @@ import java.util.Locale;
 
 @Component
 public class TestComponent {
+
+    @Autowired
+    ApplicationEventPublisher applicationEventPublisher;
+
+    @PostConstruct
+    public void run(){
+        applicationEventPublisher.publishEvent(new MyEvent(this,100));//myEvent라는 이벤트를 발생시킴
+    }
 
     @Autowired
     MessageSource messageSource;

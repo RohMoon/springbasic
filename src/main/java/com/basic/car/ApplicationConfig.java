@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @Configuration
-@ComponentScan(basePackageClasses = CarMain.class, value = "com.basic.environment")
+@ComponentScan(basePackageClasses = CarMain.class, value = "com.basic.applicationContext")
 public class ApplicationConfig{
 
     @Bean
