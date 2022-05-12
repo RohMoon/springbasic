@@ -1,12 +1,24 @@
 package com.basic.car;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @Configuration
-@ComponentScan(basePackageClasses = CarMain.class)
+@ComponentScan(basePackageClasses = CarMain.class, value = "com.basic.environment")
 public class ApplicationConfig{
+
+    @Bean
+    public MessageSource messageSource(){
+
+        ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
+        reloadableResourceBundleMessageSource.setBasename("classpath:/message");
+        reloadableResourceBundleMessageSource.setDefaultEncoding("UTF-8");
+        return reloadableResourceBundleMessageSource;
+
+    }
 
     @Bean
     public CarRepository carRepository(){ // bean의 id 값이 메서드의 이름.
