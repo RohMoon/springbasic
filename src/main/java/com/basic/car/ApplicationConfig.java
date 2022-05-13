@@ -19,8 +19,10 @@ public class ApplicationConfig{
     @Bean
     public void resourceLoaderEx(){
         Resource resource = resourceLoader.getResource("classpath:test.txt");//리소스를 가져옴
+        Resource resource2 = resourceLoader.getResource("file://test.txt");//리소스를 가져옴
         System.out.println("resource.exists()    ====> ");
         System.out.println(resource.exists());
+        System.out.println(resource2.exists());
     }
 
     @Bean
