@@ -19,7 +19,8 @@ public class CarMain {
 //    @Autowired
 //    Environment environment;
     public static void main(String[] args) {
-        Event event = new Event();//이벤트 객체 생성
+
+        /*Event event = new Event();//이벤트 객체 생성
         EventValidator eventValidator = new EventValidator();//validator 생성
         // 에러를 담는 객체, 어떤 객체를 검사할 것이며, 어떤 이름인지
         Errors errors = new BeanPropertyBindingResult(event , "event");
@@ -33,7 +34,7 @@ public class CarMain {
             Arrays.stream(e.getCodes()).forEach(System.out::println);// validate메서드에서 정해준 errorCode 값들
             System.out.println(e.getDefaultMessage()); //validate 메서드에서 정해준 defaultMessage 값
         });
-
+*/
 
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);

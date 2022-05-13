@@ -5,6 +5,11 @@ public class Event {
 
     Integer id;
 
+    String title; // 비어있으면 안됨.
+
+    public Event(Integer id) {
+        this.id=id;
+    }
 //    @NotEmpty//비어 있으면 안된다.
 //    String title;
 //
@@ -15,7 +20,7 @@ public class Event {
 //    String email;
 
 
-    String title; // 비어있으면 안됨.
+
 
     public Integer getId() {
         return id;
@@ -31,5 +36,13 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
     }
 }
