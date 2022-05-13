@@ -1,14 +1,27 @@
 package com.basic.car;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 @Configuration
 @ComponentScan(basePackageClasses = CarMain.class, value = "com.basic.applicationContext")
 public class ApplicationConfig{
+
+    @Autowired
+    ResourceLoader resourceLoader;
+
+    @Bean
+    public void resourceLoaderEx(){
+        Resource resource = resourceLoader.getResource("classpath:test.txt");//리소스를 가져옴
+        System.out.println("resource.exists()    ====> ");
+        System.out.println(resource.exists());
+    }
 
     @Bean
     public MessageSource messageSource(){
@@ -17,7 +30,6 @@ public class ApplicationConfig{
         reloadableResourceBundleMessageSource.setBasename("classpath:/message");
         reloadableResourceBundleMessageSource.setDefaultEncoding("UTF-8");
         return reloadableResourceBundleMessageSource;
-
     }
 
     @Bean
