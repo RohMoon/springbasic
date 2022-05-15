@@ -3,9 +3,9 @@ package com.basic.applicationContext;
 
 public class Event {
 
-    Integer id;
+    private Integer id;
 
-    String title; // 비어있으면 안됨.
+    private String title; // 비어있으면 안됨.
 
     public Event(Integer id) {
         this.id=id;
@@ -18,9 +18,6 @@ public class Event {
 //
 //    @Email // 이메일 형식이어야함.
 //    String email;
-
-
-
 
     public Integer getId() {
         return id;
