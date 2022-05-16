@@ -3,6 +3,7 @@ package com.basic.car;
 import com.basic.applicationContext.Event;
 import com.basic.applicationContext.EventValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,8 @@ public class CarMain {
 
 //    @Autowired
 //    Environment environment;
+
+
     public static void main(String[] args) {
 
         /*Event event = new Event();//이벤트 객체 생성
@@ -36,7 +39,6 @@ public class CarMain {
         });
 */
 
-
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 //        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
         String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
@@ -44,9 +46,11 @@ public class CarMain {
 
         CarService carService = (CarService) applicationContext.getBean("carService");//<<
         System.out.println(carService != null);
-//        print();
+//        ValueSample vs = new ValueSample(3);
+        carService.print();
 
     }
+
 //    public static void print(){
 //        System.out.println(Arrays.toString(environment.getActiveProfiles())); // 현재 적용된 프로파일
 //        System.out.println(Arrays.toString(environment.getDefaultProfiles()));// default 프로파일.
