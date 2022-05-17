@@ -2,6 +2,7 @@ package com.basic.car;
 
 import com.basic.applicationContext.Event;
 import com.basic.applicationContext.EventValidator;
+import com.basic.applicationContext.TestEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -46,6 +47,7 @@ public class CarMain {
 
         CarService carService = (CarService) applicationContext.getBean("carService");//<<
         System.out.println(carService != null);
+
 //        ValueSample vs = new ValueSample(3);
         carService.print();
 

@@ -1,5 +1,8 @@
 package com.basic.car;
 
+import com.basic.applicationContext.EventService;
+import com.basic.applicationContext.PerfLogging;
+import com.basic.applicationContext.TestEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
@@ -15,19 +18,22 @@ public class CarService {
     @Autowired
     ValueSample vs;
 
+    @Autowired
+    EventService eventService;
 
     public void setCarRepository(CarRepository carRepository){
         this.carRepository = carRepository;
 
     }
 
-
+    @PerfLogging
     public void print(){
         System.out.println("----------프린트---------");
         System.out.println(vs.getA());
         System.out.println(vs.getName());
         System.out.println(vs.isBool());
         System.out.println(vs.data);
+        eventService.publishEvent();
 
         ExpressionParser parser = new SpelExpressionParser();
         Expression expression = parser.parseExpression("2+ 100");//표현식의 #{} 내부에 들어갈 값을 적어주면 됨.
