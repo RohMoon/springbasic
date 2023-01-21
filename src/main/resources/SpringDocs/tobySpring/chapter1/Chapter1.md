@@ -13,3 +13,55 @@
 - 스프링은 객체지향 설계와 구현에 관해 특정한 모델과 기법을 억지로 가용하지 않는다.  
 하지만 오브젝트를 어떻게 효과적으로 설계하고 구현하고, 사용하고, 이를 개선해나갈 것인가에 대한 명쾌한 기준을 마련해준다.
   - 동시에 스프링은 객체지향 기술과 설계, 구현에 관한 실용적인 전략과 검증된 베스트 프랙티스를 평범한 개발자도 자연스럽고 손쉽게 적용할 수 있도록 프레임워크 형태로 제공한다.
+   
+
+### 초난감 DAO
+- 사용자 정보를 JDBC API를 통해 DB에 저장하고 조회할 수 잇는 간단한 DAO를 하나 만들어보자.
+
+> DAO
+> dAO( Data Access Object )는 DB를 사용해 데이터를 조회하거나 조작하는 기능을 전담하도록 만든 오브젝트를 말한다.
+
+### User
+- 사용자정보를 저장할 때는 자바빈 규약을 따르는 오브젝트를 이용하면 편리하다.  
+사용자 정보를 저장할 User 클래스를 만든다. 리스트 1-1 은 id, name, password 세 개의 프로퍼티를 가진 User 클래스다.
+- 이제 User 오브젝트에 담긴 정보가 실제로 보관될 DB의 테이블을 하나 만들어보자 
+```java
+package com.tobySpring.chapter1;
+
+public class User {
+    String id;
+    String name;
+    String password;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+```
+> 자바빈
+> 자바빈(JAVABEAN)은 원래 비주얼 툴에서 조작 가능한 컴포넌트를 말한다.
+> 자바의 주력 개발 프랠폿임 웹 기반의 엔터프라이즈 방식으로 바뀌면서 컴포넌트로서 자바빈은 인기를 잃어갓찌만,
+> 자바빈의 몇 가지 코딩 관례는 JSP 빈, EJB와 같은 표준 기술과 자바빈 스타일의 오브젝트를 사용하는 오픈소스 기술을 통해 계속 이어져 왔다.
+> 이제는 자바빈이라고 말하면 비주얼 컴포넌트라고보다는 다음 두 가지 관례를 따라 만들어진 오브젝트를 가리킨다. 간단히 빈이라고 부르기도 한다.
+>   - 디폴트 생성자 : 자바빈은 파라미터가 없는 디폴트 생성자를 갖고 있어야 한다. 툴이나 프레임 워크에서 리플렉션을 이욯애 오브젝트를 생성하기 때문에 필요하다.
+>   - 프로퍼티 : 자바빈이 노출하는 이름을 가진 속성을 프로퍼티라고 한다.프로퍼티는 set으로 시작하는 수정자 메서드(setter) get으로 시작하는 접근자 메서드(getter)를 이용해 수정 또는 조회할 수 있다.
