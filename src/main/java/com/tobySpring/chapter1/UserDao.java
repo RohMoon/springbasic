@@ -3,8 +3,14 @@ package com.tobySpring.chapter1;
 import java.sql.*;
 
 public abstract class UserDao {
+    private SimpleConnectionMaker simpleConnectionMaker;
+    public UserDao() {
+        simpleConnectionMaker = new SimpleConnectionMaker();
+    }
+
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Connection connection = getConnection();
+//        Connection connection = getConnection();
+        Connection connection = simpleConnectionMaker.makeNewConnection();
 
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "insert into users(id,name,password) values(?,?,?)"
@@ -21,8 +27,8 @@ public abstract class UserDao {
 
 
     public User get(String id) throws ClassNotFoundException, SQLException {
-        Connection connection = getConnection();
-
+//        Connection connection = getConnection();
+        Connection connection = simpleConnectionMaker.makeNewConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "select * from users where id = ?"
         );
