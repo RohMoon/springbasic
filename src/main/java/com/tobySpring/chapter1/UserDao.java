@@ -2,12 +2,9 @@ package com.tobySpring.chapter1;
 
 import java.sql.*;
 
-public class UserDao {
-    public void add(User user) throws ClassNotFoundException, SQLException{
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-         "jdbc:mysql://localhost:3306/mooncompany","root","Powermove!1"
-        );
+public abstract class UserDao {
+    public void add(User user) throws ClassNotFoundException, SQLException {
+        Connection connection = getConnection();
 
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "insert into users(id,name,password) values(?,?,?)"
@@ -22,11 +19,9 @@ public class UserDao {
         connection.close();
     }
 
-    public User get(String id) throws ClassNotFoundException,SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/mooncompany","root","Powermove!1"
-        );
+
+    public User get(String id) throws ClassNotFoundException, SQLException {
+        Connection connection = getConnection();
 
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "select * from users where id = ?"
@@ -46,5 +41,33 @@ public class UserDao {
         connection.close();
 
         return user;
+    }
+
+    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+
+    public class NUserDao extends UserDao {
+        @Override
+        public Connection getConnection() throws ClassNotFoundException, SQLException {
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/mooncompany", "root", "Powermove!1"
+                );
+                return connection;
+            }
+        }
+    }
+
+    public class DUserDao extends UserDao {
+        @Override
+        public Connection getConnection() throws ClassNotFoundException, SQLException {
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/mooncompany", "root", "Powermove!1"
+                );
+                return connection;
+            }
+        }
     }
 }
