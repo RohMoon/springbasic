@@ -1,11 +1,12 @@
 package com.tobySpring.chapter1.pattern.codeSpit.templateMethodPattern;
 
 import java.util.HashSet;
+import java.util.Set;
 
 abstract class DiscountPolicy {
     private Set<DiscountCondition> conditions = new HashSet<>();
 
-    public void addCondition(DiscountCondition condition){conditions.add(condition)}
+    public void addCondition(DiscountCondition condition){conditions.add(condition);}
 
     public Money calculateFee(Screening screening, int count, Money fee){// 템플릿 메서드
     for (DiscountCondition condition : conditions){
