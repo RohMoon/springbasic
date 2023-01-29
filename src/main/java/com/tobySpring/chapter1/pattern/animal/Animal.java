@@ -1,4 +1,4 @@
-package com.tobySpring.chapter1.pattern;
+package com.tobySpring.chapter1.pattern.animal;
 
 public abstract class Animal {
     public abstract String getName();

@@ -1,4 +1,4 @@
-package com.tobySpring.chapter1.pattern;
+package com.tobySpring.chapter1.pattern.animal;
 
 abstract class AnimalFactory {
     abstract Animal factoyryReturn(String srt);
