@@ -17,7 +17,7 @@ package algorithm.leetcod.twoSum;
  * -109 <= target <= 109
  * target 값은 -109 이상 109 이하
  *
- * Can you come up with an algorithm that is less than O(n2) time complexity?
+ * Can you come up with an algorithm that                is less than O(n2) time complexity?
  *  => O(n^2) 시간 복잡도 미만으로 알고리즘을 만들 수 있니?
  *
  * 시간 복잡도 ( Time Complexity )
@@ -32,10 +32,21 @@ class Solution {
 
     }
 
-    public int[] twoSum(int[] nums, int target) {
+    protected int[] twoSum(int[] nums, int target) {
+        int[] answerArr = new int[2];
 
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length && i != j; j++) {
 
-        System.out.println();
-        return new int[2];
+                if (nums[i] + nums[j] == target) {
+                    answerArr[0] = i;
+                    answerArr[1] = j;
+
+                    return answerArr;
+                }
+            }
+        }
+
+        return answerArr;
     }
 }
