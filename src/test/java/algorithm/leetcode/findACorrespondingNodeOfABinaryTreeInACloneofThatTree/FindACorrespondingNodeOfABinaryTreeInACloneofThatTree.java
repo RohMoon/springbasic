@@ -32,29 +32,54 @@ public class FindACorrespondingNodeOfABinaryTreeInACloneofThatTree {
     @Test
     void solution_test() {
         Solution solution = new Solution();
-//        int[] treeOrigin = new int[]{7, 4, 3, 0, 0, 6, 19};
-        TreeNode target = new TreeNode(3);
+        TreeNode root = new TreeNode(7);
+        TreeNode l1 = new TreeNode(4);
+        TreeNode r1 = new TreeNode(3);
 
-        TreeNode treeOrigin = new TreeNode(7);
-        treeOrigin.left = new TreeNode(4);
-        treeOrigin.right = new TreeNode(3);
-        treeOrigin.left.left = null;
-        treeOrigin.left.right = null;
-        treeOrigin.right.left = new TreeNode(6);
-        treeOrigin.right.right = new TreeNode(19);
+        root.left = l1;
+        root.right = r1;
 
-        TreeNode cloned = treeOrigin;
+        TreeNode l2 = new TreeNode(0);
+        TreeNode r2 = new TreeNode(6);
 
-        TreeNode answer = solution.getTargetCopy(treeOrigin,cloned,target);
+        l1.left = l2;
+        l1.right = r2;
 
-        Assertions.assertEquals(3, answer.val);
+        TreeNode r3 = new TreeNode(19);
+        r1.right = r3;
+
+        // 복제 이진트리 만들기
+        TreeNode clonedRoot = new TreeNode(7);
+        TreeNode clonedL1 = new TreeNode(4);
+        TreeNode clonedR1 = new TreeNode(3);
+
+        clonedRoot.left = clonedL1;
+        clonedRoot.right = clonedR1;
+
+        TreeNode clonedL2 = new TreeNode(0);
+        TreeNode clonedR2 = new TreeNode(6);
+
+        clonedL1.left = clonedL2;
+        clonedL1.right = clonedR2;
+
+        TreeNode clonedR3 = new TreeNode(19);
+        clonedR1.right = clonedR3;
+
+        // 대상 노드 찾기
+        TreeNode target = r1;
+
+        TreeNode answer = solution.getTargetCopy(root,clonedRoot,target);
+
+        Assertions.assertEquals(target.val, answer.val);
 }
 
 class Solution {
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+
         if (original == null){
             return null;
         }
+
         if (original == target){
             return cloned;
         }
