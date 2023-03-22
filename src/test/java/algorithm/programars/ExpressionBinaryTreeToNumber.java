@@ -19,15 +19,15 @@ public class ExpressionBinaryTreeToNumber {
      * */
     void expressionBinaryTreeToNumber(){
 
-        [7, 42, 5]	[1, 1, 0]
-        [63, 111, 95]	[1, 1, 0]
+//        [7, 42, 5]	[1, 1, 0]
+//        [63, 111, 95]	[1, 1, 0]
 
     }
 }
 
-class Solution {
-    public int[] solution(long[] numbers) {
-        int[] answer = {};
-        return answer;
-    }
-}
+//class Solution {
+//    public int[] solution(long[] numbers) {
+//        int[] answer = {};
+//        return answer;
+//    }
+//}
